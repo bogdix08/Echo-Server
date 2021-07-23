@@ -13,6 +13,8 @@
 #include "queue.h"
 #include <pthread.h>
 
+#define SERVER_PORT 8888
+#define MAX_BUFFER_SIZE 1024
 #define MAXEVENTS 64
 #define MAXCLIENTS 10
 #define DEBUG_SRV_INFO(f_, ...) if (server_debug) { printf("%s:%d: " f_ , __func__, __LINE__, ##__VA_ARGS__); }

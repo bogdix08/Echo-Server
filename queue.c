@@ -11,33 +11,30 @@ struct QNode* newNode(char message [])
     return temp;
 }
 
-// A utility function to create an empty queue
+/*function to create an empty queue */
 struct Queue *createQueue()
 {
     struct Queue *q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = q->rear = NULL;
     return q;
 }
- 
-// The function to add a key k to q
+
+/* function to add a node into queue */
 void enQueue(struct Queue *q, char message[])
 {
-    // Create a new LL node
     struct QNode *temp = newNode(message);
  
-    // If queue is empty, then new node is front and rear both
     if (q->rear == NULL)
     {
        q->front = q->rear = temp;
        return;
     }
- 
-    // Add the new node at the end of queue and change rear
+
     q->rear->next = temp;
     q->rear = temp;
 }
- 
-// Function to remove a key from given queue q
+
+/* function to pop from queu */
 struct QNode *deQueue(struct Queue *q)
 {
     // If queue is empty, return NULL.

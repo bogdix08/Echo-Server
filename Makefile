@@ -17,7 +17,7 @@ all: $(QUEUE).o $(SRV) $(CLT)
 $(QUEUE).o:$(QUEUE).c $(QUEUE).h
 	$(CC) -c $(QUEUE).c
 
-$(SRV).o:$(SRV).c common.h 
+$(SRV).o:$(SRV).c common.h
 	$(CC) -c $(SRV).c
 
 $(SRV):$(SRV).o $(QUEUE).o
