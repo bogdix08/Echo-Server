@@ -1,6 +1,8 @@
 CC=gcc
 
-LIBSOCKET=-lnsl -lpthread
+LIBSOCKET=-lnsl
+
+LIBPTHREAD=-lpthread
 
 CCFLAGS=-Wall -g
 
@@ -15,15 +17,14 @@ all: $(QUEUE).o $(SRV) $(CLT)
 $(QUEUE).o:$(QUEUE).c $(QUEUE).h
 	$(CC) -c $(QUEUE).c
 
-$(SRV).o:$(SRV).c 
-	$(CC) -c $(SRV).c $(LIBSOCKET)
+$(SRV).o:$(SRV).c common.h 
+	$(CC) -c $(SRV).c
 
 $(SRV):$(SRV).o $(QUEUE).o
-	$(CC) -o $(SRV) $(SRV).o $(QUEUE).o 
+	$(CC) -o $(SRV) $(SRV).o $(QUEUE).o $(LIBSOCKET) $(LIBPTHREAD)
 
 
-$(CLT):	$(CLT).c
-
+$(CLT):	$(CLT).c common.h
 	$(CC) -o $(CLT) $(LIBSOCKET) $(CLT).c
 
 
